@@ -17,7 +17,9 @@
 
 /* HEADER */
 header{
-    background-color: var(--color-dark);
+    /* background-color: var(--color-dark); */
+    background-image: url("/images/mirror.png");
+    /* background-repeat: no-repeat; */
 }
 
 .head-title{
