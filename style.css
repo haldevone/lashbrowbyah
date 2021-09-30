@@ -1,0 +1,30 @@
+
+/* Custom prop */
+:root{
+--ffamily-primary: "Source Sans Pro", "sans-serif";
+--ffamily-secondary: "Source Code Pro", "monospace";
+
+--color-light: #fff;
+--color-dark: rgb(29, 28, 28);
+--color-accent: rgb(226, 140, 159);
+--color-medium: rgb(151, 150, 150);
+
+--fsize-h1: 3rem;
+--fsize-h2: 2.25rem;
+--fsize-h3: 1.25rem;
+--fsize-body: 1rem;
+}
+
+/* HEADER */
+header{
+    background-color: var(--color-dark);
+}
+
+.head-title{
+    color: var(--color-light);
+    margin: 0 auto;
+    font-size: var(--fsize-h1);
+    max-width: 600px;
+    text-align: center;
+    padding: 2em 0;
+}
