@@ -1,8 +1,8 @@
 
-let carouselContainer = document.querySelectorAll(".carousel");
-let slide = document.querySelectorAll(".carousel-item");
-let slideTotal = slide.length -1;
-let slideCurrent = -1;
+var carouselContainer = document.querySelectorAll(".carousel");
+var slide = document.querySelectorAll(".carousel-item");
+var slideTotal = slide.length - 1;
+var slideCurrent = -1;
 
 const noBullets = false;
 const repeat = false;
@@ -17,14 +17,20 @@ setTimeout(function () {
 }
 
 function InitBullets(){
+    if (noBullets) {
+        return;
+    }
     let bullets = document.querySelectorAll(".bullet");
     for (let i = 0; i < bullets.length; i++) {
         bullets[i].addEventListener('click', () => {GoToIndexItem(i)});
-        slide[i].classList.add("proactivated");
+        slide[i].classList.add("postactivated");
     }
 }
 
 function InitArrows(){
+    if (noArrows) {
+        return;
+    }
     const leftArrow = document.createElement("a");
     const iLeft = document.createElement("i");
     iLeft.classList.add("fa");
@@ -67,32 +73,33 @@ function UpdateBullets(){
 }
 
 function checkRepeat(){
+
     if (!repeat) {
         if (slideCurrent === slide.length -1) {
             slide[0].classList.add("not-visible");
             slide[slide.length - 1].classList.remove('not-visible');
             if (!noArrows) {
-                document.querySelector('.slider-right').classList.add('not-visible')
-                document.querySelector('.slider-left').classList.remove('not-visible')
+                document.querySelector('.slider-right').classList.add('not-visible');
+                document.querySelector('.slider-left').classList.remove('not-visible');
+            }
+        }else if (slideCurrent === 0) {
+            slide[slide.length - 1].classList.add('not-visible');
+            slide[0].classList.remove('not-visible');
+            if (!noArrows) {
+                document.querySelector('.slider-left').classList.add('not-visible');
+                document.querySelector('.slider-right').classList.remove('not-visible');
+            }
+        }else {
+            slide[slide.length - 1].classList.remove('not-visible');
+            slide[0].classList.remove('not-visible');
+            if (!noArrows) {
+                document.querySelector('.slider-left').classList.remove('not-visible');
+                document.querySelector('.slider-right').classList.remove('not-visible');
             }
         }
     } 
-    else if (slideCurrent === 0) {
-        slide[slide.length - 1].classList.add('not-visible');
-        slide[0].classList.remove('not-visible');
-        if (!noArrows) {
-            document.querySelector('.slider-left').classList.add('not-visible')
-            document.querySelector('.slider-right').classList.remove('not-visible')
-        }
-    }
-    else {
-        slide[slide.length - 1].classList.remove('not-visible');
-        slide[0].classList.remove('not-visible');
-        if (!noArrows) {
-            document.querySelector('.slider-left').classList.remove('not-visible')
-            document.querySelector('.slider-right').classList.remove('not-visible')
-        }
-    }
+    
+}
 
 function slideRight(){
     if (slideCurrent < slideTotal) {
@@ -102,25 +109,25 @@ function slideRight(){
     }
 
     if (slideCurrent > 0) {
-        let preactiveSlide = slide[slideCurrent -1];
+        var preactiveSlide = slide[slideCurrent -1];
     }else{
-        let preactiveSlide = slide[slideTotal];
+        var preactiveSlide = slide[slideTotal];
     }
 
     let activeSlide = slide[slideCurrent];
     if (slideCurrent < slideTotal) {
-        let postactiveSlide = slide[slideCurrent +1];
+        var postactiveSlide = slide[slideCurrent +1];
     }else{
-        let postactiveSlide = slide[0];
+        var postactiveSlide = slide[0];
     }
     slide.forEach((elem) => {
-        let thisSlide = elem;
+        var thisSlide = elem;
         if (thisSlide.classList.contains("preactivated")) {
             thisSlide.classList.remove("preactivated");
             thisSlide.classList.remove("preactive");
             thisSlide.classList.remove("active");
-            thisSlide.classList.remove("postactivated");
-            thisSlide.classList.add("postactive");
+            thisSlide.classList.remove("postactive");
+            thisSlide.classList.add("postactivated");
         }
         if (thisSlide.classList.contains("preactive")) {
             thisSlide.classList.remove("preactive");
@@ -159,19 +166,19 @@ function slideLeft(){
     }
 
     if (slideCurrent < slideTotal) {
-        let postactiveSlide = slide[slideCurrent +1];
+        var postactiveSlide = slide[slideCurrent +1];
     }else{
-        let postactiveSlide = slide[0];
+        var postactiveSlide = slide[0];
     }
 
-    let activeSlide = slide[slideCurrent];
+    var activeSlide = slide[slideCurrent];
     if (slideCurrent > 0) {
-        let preactiveSlide = slide[slideCurrent -1];
+        var preactiveSlide = slide[slideCurrent -1];
     }else{
-        let preactiveSlide = slide[slideTotal];
+        var preactiveSlide = slide[slideTotal];
     }
     slide.forEach((elem) => {
-        let thisSlide = elem;
+        var thisSlide = elem;
         if (thisSlide.classList.contains("postactive")) {
             thisSlide.classList.remove("preactivated");
             thisSlide.classList.remove("preactive");
